@@ -11,15 +11,15 @@ const LanguageSelector = ({ selectedLanguage, onLanguageChange }) => {
   return (
     <div>
       <Select value={selectedLanguage} onValueChange={onLanguageChange}>
-        <SelectTrigger id="language-select" className="w-3xs">
+        <SelectTrigger id="language-select" className="w-3xs cursor-pointer">
           <SelectValue placeholder="Select a language" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="python">
+          <SelectItem className="cursor-pointer" value="python">
             <SiPython className="text-[#3776AB]" />
             Python
           </SelectItem>
-          <SelectItem value="r">
+          <SelectItem className="cursor-pointer" value="r">
             <SiR className="text-[#276DC3]" />R
           </SelectItem>
         </SelectContent>

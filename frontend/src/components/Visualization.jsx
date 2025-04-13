@@ -13,10 +13,14 @@ const Visualization = ({ visualizationData, loading }) => {
       <Label className="text-md font-medium">Visualization Result</Label>
 
       <Card className="w-full">
-        <CardContent className="p-6 space-y-4">
-          <div className="flex justify-between items-center">
+        <CardContent>
+          <div className="flex justify-end items-center">
             {url && (
-              <Button variant="link" className="text-sm" asChild>
+              <Button
+                variant="link"
+                className="text-sm cursor-pointer mb-1"
+                asChild
+              >
                 <a href={url} target="_blank" rel="noopener noreferrer">
                   Open in new tab <ExternalLink className="ml-1 w-4 h-4" />
                 </a>
@@ -24,7 +28,7 @@ const Visualization = ({ visualizationData, loading }) => {
             )}
           </div>
 
-          <div className="w-full h-[500px] rounded-md border flex items-center justify-center bg-white">
+          <div className="w-full min-h-[500px] rounded-md border flex items-center justify-center bg-white overflow-hidden">
             {loading ? (
               <Skeleton className="w-full h-full" />
             ) : url ? (

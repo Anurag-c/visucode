@@ -100,7 +100,7 @@ const App = () => {
               <Button
                 onClick={handleGenerateVisualization}
                 size="sm"
-                className="rounded-sm"
+                className="rounded-sm cursor-pointer"
                 disabled={loading}
               >
                 {loading ? (
