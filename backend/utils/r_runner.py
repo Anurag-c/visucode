@@ -3,7 +3,7 @@ from .base_runner import BaseRunner
 
 class RRunner(BaseRunner):
     def get_docker_image(self):
-        return "visucode-r"
+        return "sowmithkatkuri/r-runner"
 
     def get_output_filename(self):
         if "plotly" in self.code or "rgl" in self.code:

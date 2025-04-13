@@ -18,11 +18,12 @@ class CodeRequest(BaseModel):
 async def generate_visualization(req: CodeRequest):
     file_id = os.urandom(6).hex()
     os.makedirs("static", exist_ok=True)
+    ext = "py" if req.language == "python" else "r"
 
     try:
         runner = get_runner(req.language, req.code, file_id)
         processed_code = runner.preprocess_code()
-        code_path = f"/tmp/{file_id}.{req.language}"
+        code_path = f"/tmp/{file_id}.{ext}"
 
         with open(code_path, "w") as f:
             f.write(processed_code)
@@ -30,7 +31,7 @@ async def generate_visualization(req: CodeRequest):
         subprocess.run([
             "docker", "run", "--rm",
             "-v", f"{os.path.abspath('static')}:/app/output",
-            "-v", f"{code_path}:/app/script.{req.language}",
+            "-v", f"{code_path}:/app/script.{ext}",
             runner.get_docker_image()
         ], check=True)
 
